@@ -1,0 +1,121 @@
+
+
+
+:host {
+  display: block;
+  padding: 12px 0;
+}
+
+h1 {
+  margin: 0 0 12px;
+}
+
+h2 {
+  margin: 16px 0 8px;
+  font-size: 1.05rem;
+}
+
+form {
+  max-width: 760px;
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #e3e3e3;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+
+  label {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  input,
+  select {
+    padding: 10px 12px;
+    border: 1px solid #cfcfcf;
+    border-radius: 10px;
+    outline: none;
+    font-size: 0.95rem;
+    background: #fff;
+
+    &:focus {
+      border-color: #9a9a9a;
+    }
+
+    &:disabled {
+      background: #f5f5f5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.err {
+  color: #c62828;
+  font-size: 0.9rem;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #cfcfcf;
+  background: #f7f7f7;
+  cursor: pointer;
+  font-weight: 600;
+
+  &:hover {
+    background: #efefef;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.link {
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #cfcfcf;
+  display: inline-block;
+
+  &:hover {
+    background: #f7f7f7;
+  }
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #ededed;
+  margin: 6px 0;
+}
+
+/* Make it look sane on smaller screens */
+@media (max-width: 600px) {
+  form {
+    padding: 12px;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+
+    button,
+    .link {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

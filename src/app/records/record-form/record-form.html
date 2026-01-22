@@ -1,0 +1,106 @@
+<h1>{{ isEdit ? 'Update record' : 'Add record' }}</h1>
+
+<div class="err" *ngIf="error">{{ error }}</div>
+<p *ngIf="loadingLookups">Loading formats/genres...</p>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <h2>Record</h2>
+
+  <mat-form-field appearance="outline" class="full">
+  <mat-label>Record Title</mat-label>
+  <input matInput formControlName="recordTitle" />
+  <mat-error *ngIf="t('recordTitle')">Record title is required.</mat-error>
+</mat-form-field>
+
+
+  <mat-form-field appearance="outline" class="full">
+    <mat-label>Artist</mat-label>
+    <input matInput formControlName="artist" />
+    <mat-error *ngIf="t('artist')">Artist is required.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full">
+    <mat-label>Format</mat-label>
+    <mat-select formControlName="format">
+      <mat-option value="">-- select --</mat-option>
+      <mat-option *ngFor="let f of formats" [value]="f">{{ f }}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="t('format')">Format is required.</mat-error>
+  </mat-form-field>
+
+<mat-form-field appearance="outline" class="full">
+  <mat-label>Genre</mat-label>
+  <mat-select formControlName="genre">
+    <mat-option value="">-- select --</mat-option>
+    <mat-option *ngFor="let g of genres" [value]="g">{{ g }}</mat-option>
+  </mat-select>
+  <mat-error *ngIf="t('genre')">Genre is required.</mat-error>
+</mat-form-field>
+
+<mat-form-field appearance="outline" class="full">
+  <mat-label>Release Year</mat-label>
+  <input matInput type="number" formControlName="releaseYear" />
+  <mat-error *ngIf="t('releaseYear')">Release year is required.</mat-error>
+</mat-form-field>
+
+
+ <mat-form-field appearance="outline" class="full">
+  <mat-label>Price</mat-label>
+  <input matInput type="number" formControlName="price" />
+  <mat-error *ngIf="t('price')">Price is required.</mat-error>
+</mat-form-field>
+
+<mat-form-field appearance="outline" class="full">
+  <mat-label>Stock Quantity</mat-label>
+  <input matInput type="number" formControlName="stockQuantity" />
+  <mat-error *ngIf="t('stockQuantity')">Stock quantity is required.</mat-error>
+</mat-form-field>
+
+  <h2>Customer Purchase</h2>
+
+  <div formGroupName="customer">
+        <mat-form-field appearance="outline" class="full">
+      <mat-label>Customer ID</mat-label>
+      <input matInput formControlName="customerId" />
+      <mat-error *ngIf="t2('customer','customerId')">
+        Must be numeric followed by a letter (e.g. 123A).
+      </mat-error>
+    </mat-form-field>
+
+
+
+<mat-form-field appearance="outline" class="full">
+  <mat-label>First Name</mat-label>
+  <input matInput formControlName="firstName" />
+  <mat-error *ngIf="t2('customer','firstName')">First name is required.</mat-error>
+</mat-form-field>
+
+
+<mat-form-field appearance="outline" class="full">
+  <mat-label>Last Name</mat-label>
+  <input matInput formControlName="lastName" />
+  <mat-error *ngIf="t2('customer','lastName')">Last name is required.</mat-error>
+</mat-form-field>
+
+
+<mat-form-field appearance="outline" class="full">
+  <mat-label>Contact Number</mat-label>
+  <input matInput formControlName="contactNumber" />
+  <mat-error *ngIf="t2('customer','contactNumber')">
+    Must be numeric and at least 8 digits.
+  </mat-error>
+</mat-form-field>
+
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" />
+      <mat-error *ngIf="t2('customer','email')">Enter a valid email.</mat-error>
+    </mat-form-field>
+
+  </div>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="saving">{{ isEdit ? 'Update' : 'Save' }}</button>
+
+  <a class="link" routerLink="/records">Cancel</a>
+
+</form>
